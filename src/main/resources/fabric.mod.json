@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "tutorialmod",
+	"version": "${version}",
+	"name": "Tutorial Mod",
+	"description": "This is a Tutorial Mod by Zapfsäule",
+	"authors": [
+		"Zapfsäule!"
+	],
+	"contact": {
+		"homepage": "https://zapfsaule.net",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/tutorialmod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.zapfsaule.tutorialmod.TutorialMod"
+		],
+		"fabric-datagen": [
+			"net.zapfsaule.tutorialmod.TutorialModDataGenerator"
+		],
+		"client": [
+			"net.zapfsaule.tutorialmod.TutorialModClient"
+		]
+	},
+	"mixins": [
+		"tutorialmod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
