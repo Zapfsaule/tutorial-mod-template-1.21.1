@@ -2,6 +2,8 @@
   "item.tutorialmod.pink_garnet": "Pink Garnet",
   "item.tutorialmod.raw_pink_garnet": "Raw Pink Garnet",
   "item.tutorialmod.chisel": "Chisel",
+  "item.tutorialmod.cauliflower": "Cauliflower",
+  "item.tutorialmod.starlight_ashes": "Starlight Ashes",
 
   "block.tutorialmod.pink_garnet_block": "Block of Pink Garnet",
   "block.tutorialmod.raw_pink_garnet_block": "Block of Raw Pink Garnet",
@@ -12,7 +14,12 @@
   "block.tutorialmod.magic_block": "Magic Block",
 
   "itemgroup.tutorialmod.pink_garnet_items": "Pink Garnet Items",
-  "itemgroup.tutorialmod.pink_garnet_blocks": "Pink Garnet Blocks"
+  "itemgroup.tutorialmod.pink_garnet_blocks": "Pink Garnet Blocks",
+
+  "tooltip.tutorialmod.magic_block.tooltip": "This Block ist very, very §9Magical!§r",
+  "tooltip.tutorialmod.chisel.shift_down": "This item chisels blocks into Bricks!",
+  "tooltip.tutorialmod.chisel": "Press §eShift§r for more Information",
+  "tooltip.tutorialmod.cauliflower.tooltip": "This is delicious"
 
 
 }
