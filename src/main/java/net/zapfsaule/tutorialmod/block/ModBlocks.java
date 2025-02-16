@@ -11,7 +11,10 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.zapfsaule.tutorialmod.TutorialMod;
+import net.zapfsaule.tutorialmod.block.custom.ChainHook;
+import net.zapfsaule.tutorialmod.block.custom.CowBlock;
 import net.zapfsaule.tutorialmod.block.custom.MagicBlock;
+import net.zapfsaule.tutorialmod.block.custom.PinkGarnetLampBlock;
 
 public class ModBlocks {
 
@@ -54,6 +57,20 @@ public class ModBlocks {
             new DoorBlock(BlockSetType.IRON,AbstractBlock.Settings.create().strength(2f).requiresTool().nonOpaque()));
     public static final Block PINK_GARNET_TRAPDOOR = registerBlock("pink_garnet_trapdoor",
             new TrapdoorBlock(BlockSetType.IRON,AbstractBlock.Settings.create().strength(2f).requiresTool().nonOpaque()));
+
+
+    public static final Block PINK_GARNET_LAMP = registerBlock("pink_garnet_lamp",
+            new PinkGarnetLampBlock(AbstractBlock.Settings.create()
+                    .strength(1f).requiresTool().luminance(state -> state.get(PinkGarnetLampBlock.CLICKED) ? 15 : 0)));
+
+    public static final Block COW_BLOCK = registerBlock("cow_block",
+            new CowBlock(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+    public static final Block COW_BLOCK_DRAINED = registerBlock("cow_block_drained",
+            new CowBlock(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+
+
+    public static final Block CHAIN_HOOK = registerBlock("chain_hook",
+            new ChainHook(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
 
 
 

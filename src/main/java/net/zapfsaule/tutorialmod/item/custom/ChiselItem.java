@@ -17,6 +17,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 import net.zapfsaule.tutorialmod.block.ModBlocks;
+import net.zapfsaule.tutorialmod.component.ModDataComponentTypes;
+import net.zapfsaule.tutorialmod.util.ModTags;
 
 import java.util.List;
 import java.util.Map;
@@ -50,6 +52,9 @@ public class ChiselItem extends Item {
 
 
                 world.playSound(null, context.getBlockPos(), SoundEvents.BLOCK_GRINDSTONE_USE, SoundCategory.BLOCKS);
+
+                context.getStack().set(ModDataComponentTypes.COORDINATES, context.getBlockPos());
+
             }
         }
 
@@ -62,6 +67,9 @@ public class ChiselItem extends Item {
             tooltip.add(Text.translatable("tooltip.tutorialmod.chisel.shift_down"));
         }   else {
             tooltip.add(Text.translatable("tooltip.tutorialmod.chisel"));
+        }
+        if(stack.get(ModDataComponentTypes.COORDINATES) != null) {
+            tooltip.add(Text.translatable("tooltip.tutorialmod.chisel.coordinates", stack.get(ModDataComponentTypes.COORDINATES)));
         }
 
         super.appendTooltip(stack, context, tooltip, type);

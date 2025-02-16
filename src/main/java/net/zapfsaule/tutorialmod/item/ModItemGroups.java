@@ -23,6 +23,8 @@ public class ModItemGroups {
                         entries.add(ModItems.CAULIFLOWER);
                         entries.add(ModItems.STARLIGHT_ASHES);
 
+                        entries.add(ModItems.HOOK);
+
                     })
 
                     .build());
@@ -50,6 +52,11 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.PINK_GARNET_DOOR);
                         entries.add(ModBlocks.PINK_GARNET_TRAPDOOR);
+
+                        entries.add(ModBlocks.PINK_GARNET_LAMP);
+
+                        entries.add(ModBlocks.COW_BLOCK);
+                        entries.add(ModBlocks.CHAIN_HOOK);
 
                     })
 
