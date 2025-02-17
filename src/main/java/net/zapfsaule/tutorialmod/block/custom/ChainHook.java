@@ -18,6 +18,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.zapfsaule.tutorialmod.block.custom.cowblock.CowBlock;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;

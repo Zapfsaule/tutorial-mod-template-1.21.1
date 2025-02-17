@@ -1,4 +1,4 @@
-package net.zapfsaule.tutorialmod.block.custom;
+package net.zapfsaule.tutorialmod.block.custom.cowblock;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -7,20 +7,17 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.zapfsaule.tutorialmod.block.ModBlocks;
+import net.zapfsaule.tutorialmod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
 public class CowBlockDrained extends HorizontalFacingBlock {
@@ -76,9 +73,11 @@ public class CowBlockDrained extends HorizontalFacingBlock {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient() && stack.getItem() == Items.EMERALD) {
+        if (!world.isClient() && stack.getItem() == ModItems.BUTCHER_KNIFE) {
 
-            world.setBlockState(pos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_ALL);
+            Direction facing = state.get(FACING);
+
+            world.setBlockState(pos, ModBlocks.COW_BLOCK_KILLED_1.getDefaultState().with(FACING, facing), Block.NOTIFY_ALL);
 
             // Diamanten droppen
             int randomAmount = 3 + world.getRandom().nextInt(4);

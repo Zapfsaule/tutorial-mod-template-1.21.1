@@ -11,10 +11,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.zapfsaule.tutorialmod.TutorialMod;
-import net.zapfsaule.tutorialmod.block.custom.ChainHook;
-import net.zapfsaule.tutorialmod.block.custom.CowBlock;
-import net.zapfsaule.tutorialmod.block.custom.MagicBlock;
-import net.zapfsaule.tutorialmod.block.custom.PinkGarnetLampBlock;
+import net.zapfsaule.tutorialmod.block.custom.*;
+import net.zapfsaule.tutorialmod.block.custom.cowblock.*;
 
 public class ModBlocks {
 
@@ -66,7 +64,15 @@ public class ModBlocks {
     public static final Block COW_BLOCK = registerBlock("cow_block",
             new CowBlock(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
     public static final Block COW_BLOCK_DRAINED = registerBlock("cow_block_drained",
-            new CowBlock(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+            new CowBlockDrained(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+    public static final Block COW_BLOCK_KILLED_1 = registerBlock("cow_block_killed_1",
+            new CowBlockKilled1(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+    public static final Block COW_BLOCK_KILLED_2 = registerBlock("cow_block_killed_2",
+            new CowBlockKilled2(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+    public static final Block COW_BLOCK_KILLED_3 = registerBlock("cow_block_killed_3",
+            new CowBlockKilled3(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+    public static final Block COW_BLOCK_KILLED_4 = registerBlock("cow_block_killed_4",
+            new CowBlockKilled4(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
 
 
     public static final Block CHAIN_HOOK = registerBlock("chain_hook",

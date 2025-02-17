@@ -1,9 +1,7 @@
 package net.zapfsaule.tutorialmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -28,6 +26,7 @@ public class ModItems {
     });
 
     public static final Item HOOK = registerItem("hook", new Item(new Item.Settings()));
+    public static final Item BUTCHER_KNIFE = registerItem("butcher_knife", new AxeItem(ToolMaterials.IRON, new Item.Settings().maxDamage(32)));
 
     public static final Item STARLIGHT_ASHES = registerItem("starlight_ashes", new Item(new Item.Settings()));
 

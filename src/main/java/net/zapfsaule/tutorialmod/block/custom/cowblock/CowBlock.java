@@ -1,4 +1,4 @@
-package net.zapfsaule.tutorialmod.block.custom;
+package net.zapfsaule.tutorialmod.block.custom.cowblock;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -22,6 +22,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.zapfsaule.tutorialmod.block.ModBlocks;
+import net.zapfsaule.tutorialmod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
 public class CowBlock extends HorizontalFacingBlock {
@@ -104,8 +105,10 @@ public class CowBlock extends HorizontalFacingBlock {
                 world.scheduleBlockTick(pos, this, 20);
             } else {
 
+                Direction facing = state.get(FACING);
+
                 // Direkt auf Dirt setzen
-                world.setBlockState(pos, ModBlocks.COW_BLOCK_DRAINED.getDefaultState(), Block.NOTIFY_ALL);
+                world.setBlockState(pos, ModBlocks.COW_BLOCK_DRAINED.getDefaultState().with(FACING, facing), Block.NOTIFY_ALL);
 
                 // Diamanten droppen
                 int randomAmount = 3 + world.getRandom().nextInt(4);
@@ -118,7 +121,7 @@ public class CowBlock extends HorizontalFacingBlock {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient() && stack.getItem() == Items.EMERALD) {
+        if (!world.isClient() && stack.getItem() == ModItems.BUTCHER_KNIFE) {
             System.out.println("🎯 Rechtsklick erkannt! Timer gestartet bei: " + pos);
 
             world.setBlockState(pos, state.with(TICKING, true).with(TICKS_LEFT, 600));

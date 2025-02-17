@@ -24,6 +24,7 @@ public class ModItemGroups {
                         entries.add(ModItems.STARLIGHT_ASHES);
 
                         entries.add(ModItems.HOOK);
+                        entries.add(ModItems.BUTCHER_KNIFE);
 
                     })
 
@@ -56,7 +57,13 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PINK_GARNET_LAMP);
 
                         entries.add(ModBlocks.COW_BLOCK);
+                        entries.add(ModBlocks.COW_BLOCK_DRAINED);
+                        entries.add(ModBlocks.COW_BLOCK_KILLED_1);
+                        entries.add(ModBlocks.COW_BLOCK_KILLED_2);
+                        entries.add(ModBlocks.COW_BLOCK_KILLED_3);
+                        entries.add(ModBlocks.COW_BLOCK_KILLED_4);
                         entries.add(ModBlocks.CHAIN_HOOK);
+                        entries.add(ModBlocks.MEAT_GRINDER);
 
                     })
 
