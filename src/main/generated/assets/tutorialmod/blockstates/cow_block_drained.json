@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tutorialmod:block/cow_block_drained",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tutorialmod:block/cow_block_drained"
+    },
+    "facing=south": {
+      "model": "tutorialmod:block/cow_block_drained",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tutorialmod:block/cow_block_drained",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tutorialmod:block/chain_hook",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tutorialmod:block/chain_hook"
+    },
+    "facing=south": {
+      "model": "tutorialmod:block/chain_hook",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tutorialmod:block/chain_hook",
+      "y": 270
+    }
+  }
+}
