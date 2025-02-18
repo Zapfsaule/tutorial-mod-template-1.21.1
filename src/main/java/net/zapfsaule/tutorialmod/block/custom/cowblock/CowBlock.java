@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -25,29 +26,17 @@ import net.zapfsaule.tutorialmod.block.ModBlocks;
 import net.zapfsaule.tutorialmod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
-public class CowBlock extends HorizontalFacingBlock {
-    public static final MapCodec<CowBlock> CODEC = createCodec(CowBlock::new);
-    private static final VoxelShape SHAPEN = Block.createCuboidShape(2, 0, 4, 14, 16, 14);
-    private static final VoxelShape SHAPEE = Block.createCuboidShape(2, 0, 2, 12, 16, 14);
-    private static final VoxelShape SHAPES = Block.createCuboidShape(2, 0, 2, 14, 16, 12);
-    private static final VoxelShape SHAPEW = Block.createCuboidShape(4, 0, 2, 14, 16, 14);
+public class CowBlock extends AbstractCowBlock {
 
+    public static final MapCodec<CowBlock> CODEC = createCodec(CowBlock::new);
     public static final BooleanProperty TICKING = BooleanProperty.of("ticking");
     public static final IntProperty TICKS_LEFT = IntProperty.of("ticks_left", 0, 600); // Max 30 Sekunden (600 Ticks)
 
-    private static VoxelShape rotateShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return SHAPEN;
-            case SOUTH:
-                return SHAPES;
-            case WEST:
-                return SHAPEW;
-            case EAST:
-                return SHAPEE;
-            default:
-                return SHAPEN;
-        }
+    static {
+        SHAPEN = Block.createCuboidShape(2, 0, 4, 14, 16, 14);
+        SHAPEE = Block.createCuboidShape(2, 0, 2, 12, 16, 14);
+        SHAPES = Block.createCuboidShape(2, 0, 2, 14, 16, 12);
+        SHAPEW = Block.createCuboidShape(4, 0, 2, 14, 16, 14);
     }
 
     public CowBlock(Settings settings) {
@@ -56,19 +45,33 @@ public class CowBlock extends HorizontalFacingBlock {
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Direction facing = state.get(FACING);
-        return rotateShape(facing);
-    }
-
-    @Override
     protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
         return CODEC;
     }
 
     @Override
-    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    protected Block getReplacementBlock() {
+        return null;
+    }
+
+    @Override
+    protected Item getRequiredItem() {
+        return null;
+    }
+
+    @Override
+    protected Item getDroppedItem() {
+        return null;
+    }
+
+    @Override
+    protected int getMinDropAmount() {
+        return 0;
+    }
+
+    @Override
+    protected int getMaxDropAmount() {
+        return 0;
     }
 
     @Override

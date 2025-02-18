@@ -7,6 +7,7 @@ import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -23,38 +24,19 @@ import net.zapfsaule.tutorialmod.block.ModBlocks;
 import net.zapfsaule.tutorialmod.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
-public class CowBlockKilled4 extends HorizontalFacingBlock {
+public class CowBlockKilled4 extends AbstractCowBlock {
+
     public static final MapCodec<CowBlockKilled4> CODEC = createCodec(CowBlockKilled4::new);
-    private static final VoxelShape SHAPEN = Block.createCuboidShape(2, 0, 4, 14, 16, 14);
-    private static final VoxelShape SHAPEE = Block.createCuboidShape(2, 0, 2, 12, 16, 14);
-    private static final VoxelShape SHAPES = Block.createCuboidShape(2, 0, 2, 14, 16, 12);
-    private static final VoxelShape SHAPEW = Block.createCuboidShape(4, 0, 2, 14, 16, 14);
 
-
-    private static VoxelShape rotateShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return SHAPEN;
-            case SOUTH:
-                return SHAPES;
-            case WEST:
-                return SHAPEW;
-            case EAST:
-                return SHAPEE;
-            default:
-                return SHAPEN;
-        }
+    static {
+        SHAPEN = Block.createCuboidShape(2, 0, 4, 14, 16, 14);
+        SHAPEE = Block.createCuboidShape(2, 0, 2, 12, 16, 14);
+        SHAPES = Block.createCuboidShape(2, 0, 2, 14, 16, 12);
+        SHAPEW = Block.createCuboidShape(4, 0, 2, 14, 16, 14);
     }
 
     public CowBlockKilled4(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState());
-    }
-
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        Direction facing = state.get(FACING);
-        return rotateShape(facing);
     }
 
     @Override
@@ -63,34 +45,27 @@ public class CowBlockKilled4 extends HorizontalFacingBlock {
     }
 
     @Override
-    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    protected Block getReplacementBlock() {
+        return null;
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+    protected Item getRequiredItem() {
+        return null;
     }
 
-
+    @Override
+    protected Item getDroppedItem() {
+        return null;
+    }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient() && stack.getItem() == ModItems.BUTCHER_KNIFE) {
+    protected int getMinDropAmount() {
+        return 0;
+    }
 
-            Direction facing = state.get(FACING);
-
-            world.setBlockState(pos, ModBlocks.COW_BLOCK_KILLED_4.getDefaultState().with(FACING, facing), Block.NOTIFY_ALL);
-
-            // Diamanten droppen
-            int randomAmount = 3 + world.getRandom().nextInt(4);
-            ItemEntity droppedItem = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
-                    new ItemStack(Items.GOLD_INGOT, randomAmount));
-            world.spawnEntity(droppedItem);
-
-
-            return ItemActionResult.SUCCESS;
-        }
-        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+    @Override
+    protected int getMaxDropAmount() {
+        return 0;
     }
 }
