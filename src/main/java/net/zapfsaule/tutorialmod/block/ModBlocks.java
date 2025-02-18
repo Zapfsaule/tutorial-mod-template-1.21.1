@@ -73,6 +73,8 @@ public class ModBlocks {
             new CowBlockKilled3(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
     public static final Block COW_BLOCK_KILLED_4 = registerBlock("cow_block_killed_4",
             new CowBlockKilled4(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
+    public static final Block COW_CORPSE = registerBlock("cow_corpse",
+            new CowCorpse(AbstractBlock.Settings.create().strength(2f).nonOpaque()));
 
 
     public static final Block CHAIN_HOOK = registerBlock("chain_hook",

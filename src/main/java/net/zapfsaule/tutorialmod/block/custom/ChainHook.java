@@ -8,6 +8,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.StateManager;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.function.BooleanBiFunction;
@@ -18,6 +19,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.zapfsaule.tutorialmod.block.ModBlocks;
 import net.zapfsaule.tutorialmod.block.custom.cowblock.CowBlock;
 import org.jetbrains.annotations.Nullable;
 
@@ -87,20 +89,32 @@ public class ChainHook extends HorizontalFacingBlock {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
+
+
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient()) {
-            // Check if the item used is an emerald (or any other item)
-            if (stack.getItem() == Items.EMERALD) {
-                world.setBlockState(pos, Blocks.DIRT.getDefaultState()); // Change block to dirt
+        // Prüfen, ob der Spieler eine CowCorpse hält
+        if (!world.isClient && stack.getItem() == ModBlocks.COW_CORPSE.asItem()) {
+            BlockPos belowPos = pos.down();
 
-                int randomAmount = 3 + world.getRandom().nextInt(4); //Random Amount between 3 and 6
-                // Drop an item (e.g., a diamond)
-                ItemEntity droppedItem = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(Items.DIAMOND, randomAmount));
-                world.spawnEntity(droppedItem);
+            // Prüfen, ob der Platz unterhalb frei ist
+            if (world.getBlockState(belowPos).isAir()) {
+                Direction facing = state.get(FACING);
+
+                // Setzt den CowBlock mit der gleichen Ausrichtung wie ChainHook
+                world.setBlockState(belowPos, ModBlocks.COW_BLOCK.getDefaultState().with(HorizontalFacingBlock.FACING, facing));
+
+                // Entfernt eine CowCorpse aus dem Inventar
+                if (!player.isCreative()) {
+                    stack.decrement(1);
+                }
+
                 return ItemActionResult.SUCCESS;
+            } else {
+                return ItemActionResult.FAIL;
             }
         }
+
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
 }

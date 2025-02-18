@@ -47,7 +47,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COW_BLOCK_KILLED_3);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COW_BLOCK_KILLED_4);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.CHAIN_HOOK);
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.MEAT_GRINDER);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.COW_CORPSE);
 
     }
 

@@ -63,7 +63,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.COW_BLOCK_KILLED_3);
                         entries.add(ModBlocks.COW_BLOCK_KILLED_4);
                         entries.add(ModBlocks.CHAIN_HOOK);
-                        entries.add(ModBlocks.MEAT_GRINDER);
+                        entries.add(ModBlocks.COW_CORPSE);
 
                     })
 
